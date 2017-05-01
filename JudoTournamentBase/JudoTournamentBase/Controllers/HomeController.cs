@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -27,6 +28,12 @@ namespace JudoTournamentBase.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        [RequireHttps]
+        public ActionResult ChangeLanguage(string language, string returnUrl)
+        {
+            Session["Culture"] = new CultureInfo(language);
+            return Redirect(returnUrl);
         }
     }
 }

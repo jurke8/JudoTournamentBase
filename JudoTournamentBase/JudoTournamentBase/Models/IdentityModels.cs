@@ -29,5 +29,7 @@ namespace JudoTournamentBase.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<JudoTournamentBase.Models.Competitor> Competitors { get; set; }
     }
 }

@@ -22,3 +22,14 @@ select,
 textarea {
     max-width: 280px;
 }
+a.classname {
+    display: block;
+    width: 70px;
+    height: 70px;
+    text-indent: -9999px; /* hides the link text */
+    background-position: center;
+}
+
+    a.classname.logo {
+        background: url(../img/rsz_mladostosijek_logo.png) no-repeat center;
+    }
