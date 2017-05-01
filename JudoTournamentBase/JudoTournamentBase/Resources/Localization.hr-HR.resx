@@ -150,6 +150,9 @@
   <data name="ExternalLoginHover" xml:space="preserve">
     <value>Prijava s @p.Caption računom</value>
   </data>
+  <data name="Female" xml:space="preserve">
+    <value>Ženski</value>
+  </data>
   <data name="FirstName" xml:space="preserve">
     <value>Ime</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="HomePageDescription" xml:space="preserve">
     <value>Opis</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Email polje nije ispravna email adresa</value>
   </data>
   <data name="Language_label" xml:space="preserve">
     <value>HR</value>
@@ -180,8 +186,14 @@
   <data name="Logoff" xml:space="preserve">
     <value>Odjava</value>
   </data>
+  <data name="Male" xml:space="preserve">
+    <value>Muški</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Lozinka</value>
+  </data>
+  <data name="PasswordField" xml:space="preserve">
+    <value>Lozinka i potvrdna lozinka se ne podudaraju</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profil</value>
@@ -197,5 +209,11 @@
   </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Zapamti me?</value>
+  </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>Ovo polje je obvezno</value>
+  </data>
+  <data name="StringLength" xml:space="preserve">
+    <value>{0} mora biti najmanje dugačka {2} znakova</value>
   </data>
 </root>

@@ -7,9 +7,9 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink(Resources.Localization.Language_label, "ChangeLanguage", "Home", new { language = Resources.Localization.Language_short, returnUrl = this.Request.RawUrl }, null)</li>
-        <li>
+        @*<li>
             @Html.ActionLink(Resources.Localization.Profile + ": " + User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
+        </li>*@
         <li><a href="javascript:document.getElementById('logoutForm').submit()">@Resources.Localization.Logoff</a></li>
     </ul>
     }
