@@ -13,13 +13,15 @@ namespace JudoTournamentBase.Controllers
     public class CompetitorsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        [RequireHttps]
+        [Authorize]
         // GET: Competitors
         public ActionResult Index()
         {
             return View(db.Competitors.ToList());
         }
-
+        [RequireHttps]
+        [Authorize]
         // GET: Competitors/Details/5
         public ActionResult Details(Guid? id)
         {
@@ -34,7 +36,8 @@ namespace JudoTournamentBase.Controllers
             }
             return View(competitor);
         }
-
+        [RequireHttps]
+        [Authorize]
         // GET: Competitors/Create
         public ActionResult Create()
         {
@@ -58,7 +61,8 @@ namespace JudoTournamentBase.Controllers
 
             return View(competitor);
         }
-
+        [RequireHttps]
+        [Authorize]
         // GET: Competitors/Edit/5
         public ActionResult Edit(Guid? id)
         {
@@ -89,7 +93,8 @@ namespace JudoTournamentBase.Controllers
             }
             return View(competitor);
         }
-
+        [RequireHttps]
+        [Authorize]
         // GET: Competitors/Delete/5
         public ActionResult Delete(Guid? id)
         {

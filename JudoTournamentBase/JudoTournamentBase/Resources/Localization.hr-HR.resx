@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AssociationForm" xml:space="preserve">
+    <value>Obrazac za prijavljivanje</value>
+  </data>
   <data name="Category" xml:space="preserve">
     <value>Kategorija</value>
   </data>
@@ -212,6 +215,16 @@
   </data>
   <data name="RequiredField" xml:space="preserve">
     <value>Ovo polje je obvezno</value>
+  </data>
+  <data name="ServiceLoginAssociation" xml:space="preserve">
+    <value>Povežite svoj Facebook račun</value>
+  </data>
+  <data name="ServiceLoginError" xml:space="preserve">
+    <value>Neuspješna prijava sa servisom</value>
+  </data>
+  <data name="ServiceLoginSuccess" xml:space="preserve">
+    <value>Uspješno ste ovjereni putem Facebooka.
+U nastavku unesite korisničko ime za ovu web stranicu i kliknite gumb Registriraj da biste dovršili prijavu.</value>
   </data>
   <data name="StringLength" xml:space="preserve">
     <value>{0} mora biti najmanje dugačka {2} znakova</value>

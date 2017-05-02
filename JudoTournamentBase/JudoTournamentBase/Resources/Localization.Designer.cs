@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Association Form.
+        /// </summary>
+        public static string AssociationForm {
+            get {
+                return ResourceManager.GetString("AssociationForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category.
         /// </summary>
         public static string Category {
@@ -345,6 +354,34 @@ namespace Resources {
         public static string RequiredField {
             get {
                 return ResourceManager.GetString("RequiredField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Associate your Facebook account.
+        /// </summary>
+        public static string ServiceLoginAssociation {
+            get {
+                return ResourceManager.GetString("ServiceLoginAssociation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsuccessful login with service.
+        /// </summary>
+        public static string ServiceLoginError {
+            get {
+                return ResourceManager.GetString("ServiceLoginError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;ve successfully authenticated with Facebook.
+        ///Please enter a user name for this site below and click the Register button to finish logging in..
+        /// </summary>
+        public static string ServiceLoginSuccess {
+            get {
+                return ResourceManager.GetString("ServiceLoginSuccess", resourceCulture);
             }
         }
         
