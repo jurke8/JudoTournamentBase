@@ -1,8 +1,10 @@
 namespace JudoTournamentBase.Migrations
 {
+    using DummyData;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Data.Entity.Validation;
     using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<JudoTournamentBase.Models.ApplicationDbContext>
@@ -15,18 +17,28 @@ namespace JudoTournamentBase.Migrations
 
         protected override void Seed(JudoTournamentBase.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            try
+            {
+                CategoriesDummy.Data.ForEach(category =>
+                {
+                    context.Categories.AddOrUpdate(c => c.Id, category); //TODO change identifier because this will always insert new record
+                });
+                context.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
         }
     }
 }

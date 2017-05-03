@@ -181,9 +181,9 @@
     <Compile Include="Controllers\CompetitorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DummyData\CategoriesDummy.cs" />
     <Compile Include="Enums\AgeEnum.cs" />
     <Compile Include="Enums\GenderEnum.cs" />
-    <Compile Include="Enums\WeightEnum.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,9 +195,14 @@
     <Compile Include="Migrations\201705011228384_competitors_added.Designer.cs">
       <DependentUpon>201705011228384_competitors_added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705021734218_categories_added.cs" />
+    <Compile Include="Migrations\201705021734218_categories_added.Designer.cs">
+      <DependentUpon>201705021734218_categories_added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Competitor.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -308,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705011228384_competitors_added.resx">
       <DependentUpon>201705011228384_competitors_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705021734218_categories_added.resx">
+      <DependentUpon>201705021734218_categories_added.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Localization.hr-HR.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

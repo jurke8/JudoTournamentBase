@@ -9,9 +9,17 @@ namespace JudoTournamentBase.Enums
 {
     public enum AgeENum
     {
-        //TODO
+        [Display(Name = "U8", ResourceType = typeof(Localization))]
+        U8 = 8,
+        [Display(Name = "U10", ResourceType = typeof(Localization))]
+        U10 = 10,
         [Display(Name = "U12", ResourceType = typeof(Localization))]
-        U12
-
+        U12 = 12,
+        [Display(Name = "U14", ResourceType = typeof(Localization))]
+        U14 = 14,
+        [Display(Name = "U16", ResourceType = typeof(Localization))]
+        U16 = 16,
+        [Display(Name = "U18", ResourceType = typeof(Localization))]
+        U18 = 18,
     }
 }
