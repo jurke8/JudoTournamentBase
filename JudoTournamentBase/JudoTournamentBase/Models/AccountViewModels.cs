@@ -10,6 +10,12 @@ namespace JudoTournamentBase.Models
         [Display(Name = "Email")]
         [EmailAddress(ErrorMessageResourceName = "InvalidEmail", ErrorMessageResourceType = typeof(Localization))]
         public string Email { get; set; }
+
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Localization))]
+        [StringLength(100, ErrorMessageResourceName = "StringLength", ErrorMessageResourceType = typeof(Localization), MinimumLength = 5)]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+
     }
 
     public class ExternalLoginListViewModel
@@ -51,10 +57,14 @@ namespace JudoTournamentBase.Models
 
     public class LoginViewModel
     {
-        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Localization))]
         [Display(Name = "Email")]
         [EmailAddress(ErrorMessageResourceName = "InvalidEmail", ErrorMessageResourceType = typeof(Localization))]
         public string Email { get; set; }
+
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Localization))]
+        [StringLength(100, ErrorMessageResourceName = "StringLength", ErrorMessageResourceType = typeof(Localization), MinimumLength = 5)]
+        [Display(Name = "UserName", ResourceType = typeof(Localization))]
+        public string UserName { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Localization))]
         [DataType(DataType.Password)]
@@ -73,8 +83,12 @@ namespace JudoTournamentBase.Models
         public string Email { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Localization))]
-        [StringLength(100, ErrorMessageResourceName = "StringLength", ErrorMessageResourceType = typeof(Localization), MinimumLength = 6)]
-        //[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessageResourceName = "StringLength", ErrorMessageResourceType = typeof(Localization), MinimumLength = 5)]
+        [Display(Name = "UserName", ResourceType = typeof(Localization))]
+        public string UserName { get; set; }
+
+        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Localization))]
+        [StringLength(100, ErrorMessageResourceName = "StringLength", ErrorMessageResourceType = typeof(Localization), MinimumLength = 5)]
 
         [DataType(DataType.Password)]
         [Display(Name = "Password", ResourceType = typeof(Localization))]
@@ -93,8 +107,10 @@ namespace JudoTournamentBase.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+
+
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Localization))]
-        [StringLength(100, ErrorMessageResourceName = "StringLength", ErrorMessageResourceType = typeof(Localization), MinimumLength = 6)]
+        [StringLength(100, ErrorMessageResourceName = "StringLength", ErrorMessageResourceType = typeof(Localization), MinimumLength = 5)]
         [DataType(DataType.Password)]
         [Display(Name = "Password", ResourceType = typeof(Localization))]
         public string Password { get; set; }
