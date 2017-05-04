@@ -181,6 +181,7 @@
     <Compile Include="Controllers\CompetitorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DummyData\RolesDummy.cs" />
     <Compile Include="DummyData\CategoriesDummy.cs" />
     <Compile Include="Enums\AgeEnum.cs" />
     <Compile Include="Enums\GenderEnum.cs" />
@@ -198,6 +199,10 @@
     <Compile Include="Migrations\201705021734218_categories_added.cs" />
     <Compile Include="Migrations\201705021734218_categories_added.Designer.cs">
       <DependentUpon>201705021734218_categories_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705041511183_roles_added.cs" />
+    <Compile Include="Migrations\201705041511183_roles_added.Designer.cs">
+      <DependentUpon>201705041511183_roles_added.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -316,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705021734218_categories_added.resx">
       <DependentUpon>201705021734218_categories_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705041511183_roles_added.resx">
+      <DependentUpon>201705041511183_roles_added.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Localization.hr-HR.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
