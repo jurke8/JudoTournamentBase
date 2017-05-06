@@ -51,7 +51,7 @@ namespace JudoTournamentBase.Migrations
                             PasswordHash = password
                         });
                     context.SaveChanges();
-
+                    
                     //Add admin role
                     var adminUser = context.Users.Where(u => "admin".Equals(u.UserName)).FirstOrDefault();
                     var store = new UserStore<ApplicationUser>(context);

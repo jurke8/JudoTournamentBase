@@ -178,7 +178,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CompetitorsController.cs" />
+    <Compile Include="Controllers\ClubsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DummyData\RolesDummy.cs" />
@@ -188,6 +188,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="Migrations\201704302259220_InitialCreate.cs" />
     <Compile Include="Migrations\201704302259220_InitialCreate.Designer.cs">
       <DependentUpon>201704302259220_InitialCreate.cs</DependentUpon>
@@ -204,9 +205,14 @@
     <Compile Include="Migrations\201705041511183_roles_added.Designer.cs">
       <DependentUpon>201705041511183_roles_added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705061005453_clubs_added.cs" />
+    <Compile Include="Migrations\201705061005453_clubs_added.Designer.cs">
+      <DependentUpon>201705061005453_clubs_added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\Club.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Competitor.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -297,12 +303,12 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <Content Include="Views\Competitors\Create.cshtml" />
-    <Content Include="Views\Competitors\Delete.cshtml" />
-    <Content Include="Views\Competitors\Details.cshtml" />
-    <Content Include="Views\Competitors\Edit.cshtml" />
-    <Content Include="Views\Competitors\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
+    <Content Include="Views\Clubs\Create.cshtml" />
+    <Content Include="Views\Clubs\Delete.cshtml" />
+    <Content Include="Views\Clubs\Details.cshtml" />
+    <Content Include="Views\Clubs\Edit.cshtml" />
+    <Content Include="Views\Clubs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -324,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705041511183_roles_added.resx">
       <DependentUpon>201705041511183_roles_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705061005453_clubs_added.resx">
+      <DependentUpon>201705061005453_clubs_added.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Localization.hr-HR.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -10,113 +10,108 @@ using JudoTournamentBase.Models;
 
 namespace JudoTournamentBase.Controllers
 {
-    public class CompetitorsController : Controller
+    public class ClubsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        [RequireHttps]
-        [Authorize]
-        // GET: Competitors
+
+        // GET: Clubs
         public ActionResult Index()
         {
-            return View(db.Competitors.ToList());
+            return View(db.Clubs.ToList());
         }
-        [RequireHttps]
-        [Authorize]
-        // GET: Competitors/Details/5
+
+        // GET: Clubs/Details/5
         public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Competitor competitor = db.Competitors.Find(id);
-            if (competitor == null)
+            Club club = db.Clubs.Find(id);
+            if (club == null)
             {
                 return HttpNotFound();
             }
-            return View(competitor);
+            return View(club);
         }
-        [RequireHttps]
-        [Authorize]
-        // GET: Competitors/Create
+
+        // GET: Clubs/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Competitors/Create
+        // POST: Clubs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Gender,DateOfBirth,Category,Club,Country,DateCreated")] Competitor competitor)
+        public ActionResult Create([Bind(Include = "Gender,Country")] Club club)
         {
             if (ModelState.IsValid)
             {
-                competitor.Id = Guid.NewGuid();
-                db.Competitors.Add(competitor);
+                club.Id = Guid.NewGuid();
+                db.Clubs.Add(club);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(competitor);
+            return View(club);
         }
-        [RequireHttps]
-        [Authorize]
-        // GET: Competitors/Edit/5
+
+        // GET: Clubs/Edit/5
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Competitor competitor = db.Competitors.Find(id);
-            if (competitor == null)
+            Club club = db.Clubs.Find(id);
+            if (club == null)
             {
                 return HttpNotFound();
             }
-            return View(competitor);
+            return View(club);
         }
 
-        // POST: Competitors/Edit/5
+        // POST: Clubs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Gender,DateOfBirth,Category,Club,Country,DateCreated")] Competitor competitor)
+        public ActionResult Edit([Bind(Include = "Id,Gender,Country")] Club club)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(competitor).State = EntityState.Modified;
+                db.Entry(club).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(competitor);
+            return View(club);
         }
-        [RequireHttps]
-        [Authorize]
-        // GET: Competitors/Delete/5
+
+        // GET: Clubs/Delete/5
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Competitor competitor = db.Competitors.Find(id);
-            if (competitor == null)
+            Club club = db.Clubs.Find(id);
+            if (club == null)
             {
                 return HttpNotFound();
             }
-            return View(competitor);
+            return View(club);
         }
 
-        // POST: Competitors/Delete/5
+        // POST: Clubs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Competitor competitor = db.Competitors.Find(id);
-            db.Competitors.Remove(competitor);
+            Club club = db.Clubs.Find(id);
+            db.Clubs.Remove(club);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
