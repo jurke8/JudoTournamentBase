@@ -15,12 +15,16 @@ namespace JudoTournamentBase.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Clubs
+        [RequireHttps]
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Clubs.ToList());
         }
 
         // GET: Clubs/Details/5
+        [RequireHttps]
+        [Authorize]
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -36,6 +40,8 @@ namespace JudoTournamentBase.Controllers
         }
 
         // GET: Clubs/Create
+        [RequireHttps]
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -60,6 +66,8 @@ namespace JudoTournamentBase.Controllers
         }
 
         // GET: Clubs/Edit/5
+        [RequireHttps]
+        [Authorize]
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -91,6 +99,8 @@ namespace JudoTournamentBase.Controllers
         }
 
         // GET: Clubs/Delete/5
+        [RequireHttps]
+        [Authorize]
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
