@@ -265,4 +265,10 @@ U nastavku unesite korisničko ime za ovu web stranicu i kliknite gumb Registrir
   <data name="ValueOutOfRange" xml:space="preserve">
     <value>Vrijednost izvan raspona</value>
   </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Težina</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>Godine</value>
+  </data>
 </root>

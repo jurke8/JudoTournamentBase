@@ -52,7 +52,7 @@ namespace JudoTournamentBase.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Gender,Country")] Club club)
+        public ActionResult Create([Bind(Include = "Name,Country")] Club club)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace JudoTournamentBase.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Gender,Country")] Club club)
+        public ActionResult Edit([Bind(Include = "Id,Name,Country")] Club club)
         {
             if (ModelState.IsValid)
             {

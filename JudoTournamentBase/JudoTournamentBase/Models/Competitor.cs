@@ -1,4 +1,5 @@
-﻿using Resources;
+﻿using JudoTournamentBase.Enums;
+using Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,7 +21,7 @@ namespace JudoTournamentBase.Models
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Localization))]
         [Display(Name = "Gender", ResourceType = typeof(Localization))]
-        public int Gender { get; set; }
+        public GenderEnum Gender { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Localization))]
         [DataType(DataType.Date)]
@@ -33,33 +34,13 @@ namespace JudoTournamentBase.Models
         {
             get
             {
-                return Helper.Years(DateOfBirth, DateTime.Now);
+                return DateTime.Now.Year - DateOfBirth.Year;
             }
             set { }
         }
-
-        [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Localization))]
-        [Range(5, 200, ErrorMessageResourceName = "ValueOutOfRange", ErrorMessageResourceType = typeof(Localization))]
-        [Display(Name = "Weight", ResourceType = typeof(Localization))]
-        public int Weight { get; set; }
 
         [Display(Name = "Category", ResourceType = typeof(Localization))]
-        public Guid CategoryId
-        {
-            get
-            {
-                using (var context = new ApplicationDbContext())
-                {
-                    var category = context.Categories.Where(c => (int)c.Gender == Gender
-                                                                    && c.Weight > Weight
-                                                                    && (int)c.Age > Years)
-                                                                    .OrderBy(c => c.Age)
-                                                                    .FirstOrDefault();
-                    return category.Id;
-                }
-            }
-            set { }
-        }
+        public Guid CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Localization))]
@@ -69,6 +50,18 @@ namespace JudoTournamentBase.Models
 
         [NotMapped]
         [Display(Name = "Country", ResourceType = typeof(Localization))]
-        public string Country { get; set; }
+        public string Country
+        {
+            get
+            {
+                return Club.Country;
+            }
+            set { }
+        }
+        public Competitor()
+        {
+            Id = Guid.NewGuid();
+            DateCreated = DateTime.Now;
+        }
     }
 }

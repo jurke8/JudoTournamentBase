@@ -265,4 +265,10 @@ Please enter a user name for this site below and click the Register button to fi
   <data name="ValueOutOfRange" xml:space="preserve">
     <value>Value out of range</value>
   </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="Years" xml:space="preserve">
+    <value>Years</value>
+  </data>
 </root>

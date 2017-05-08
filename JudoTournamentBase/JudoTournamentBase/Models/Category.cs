@@ -10,11 +10,14 @@ namespace JudoTournamentBase.Models
 {
     public class Category : BaseEntity
     {
+        [Display(Name = "Name", ResourceType = typeof(Localization))]
+        public string Name { get; set; }
+
         [Display(Name = "Gender", ResourceType = typeof(Localization))]
         public GenderEnum Gender { get; set; }
 
         [Display(Name = "Age", ResourceType = typeof(Localization))]
-        public AgeENum Age { get; set; }
+        public AgeEnum Age { get; set; }
 
         [Display(Name = "Weight", ResourceType = typeof(Localization))]
         public int Weight { get; set; }

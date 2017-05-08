@@ -501,5 +501,23 @@ namespace Resources {
                 return ResourceManager.GetString("ValueOutOfRange", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weight.
+        /// </summary>
+        public static string Weight {
+            get {
+                return ResourceManager.GetString("Weight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Years.
+        /// </summary>
+        public static string Years {
+            get {
+                return ResourceManager.GetString("Years", resourceCulture);
+            }
+        }
     }
 }

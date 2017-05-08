@@ -22,11 +22,11 @@ namespace JudoTournamentBase.Migrations
         {
             try
             {
-                //CategoriesDummy.Data.ForEach(category =>
-                //{
-                //    context.Categories.AddOrUpdate(c => c.Id, category); //TODO change identifier because this will always insert new record
-                //});
-                //context.SaveChanges();
+                CategoriesDummy.Data.ForEach(category =>
+                {
+                    context.Categories.AddOrUpdate(c => c.Id, category); //TODO change identifier because this will always insert new record
+                });
+                context.SaveChanges();
 
                 RolesDummy.Data.ForEach(role =>
                 {

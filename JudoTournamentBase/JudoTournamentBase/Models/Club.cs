@@ -12,7 +12,7 @@ namespace JudoTournamentBase.Models
     {
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Localization))]
         [Display(Name = "Name", ResourceType = typeof(Localization))]
-        public string Gender { get; set; }
+        public string Name { get; set; }
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Localization))]
         [Display(Name = "Country", ResourceType = typeof(Localization))]
