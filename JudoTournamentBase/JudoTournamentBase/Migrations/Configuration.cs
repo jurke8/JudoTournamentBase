@@ -24,7 +24,7 @@ namespace JudoTournamentBase.Migrations
             {
                 CategoriesDummy.Data.ForEach(category =>
                 {
-                    context.Categories.AddOrUpdate(c => c.Id, category); //TODO change identifier because this will always insert new record
+                    context.Categories.AddOrUpdate(c => c.Name, category);
                 });
                 context.SaveChanges();
 

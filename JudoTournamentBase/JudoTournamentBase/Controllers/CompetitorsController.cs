@@ -7,20 +7,24 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using JudoTournamentBase.Models;
+using System.Globalization;
+using JudoTournamentBase.Enums;
 
 namespace JudoTournamentBase.Controllers
 {
     public class CompetitorsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        [RequireHttps]
+        [Authorize]
         // GET: Competitors
         public ActionResult Index()
         {
             var competitors = db.Competitors.Include(c => c.Category).Include(c => c.Club);
             return View(competitors.ToList());
         }
-
+        [RequireHttps]
+        [Authorize]
         // GET: Competitors/Details/5
         public ActionResult Details(Guid? id)
         {
@@ -35,11 +39,14 @@ namespace JudoTournamentBase.Controllers
             }
             return View(competitor);
         }
-
+        [RequireHttps]
+        [Authorize]
         // GET: Competitors/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Categories.OrderBy(c => c.Gender).ThenBy(c => c.Age).ThenBy(c => c.Weight), "Id", "Name");
+            Session["Gender"] = (int)GenderEnum.FEMALE;
+            Session["Age"] = 999;
+            ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.Gender == (int)GenderEnum.FEMALE).OrderBy(c => c.Gender).ThenBy(c => c.Age).ThenBy(c => c.Weight), "Id", "Name");
             ViewBag.ClubId = new SelectList(db.Clubs, "Id", "Name");
             return View();
         }
@@ -62,7 +69,8 @@ namespace JudoTournamentBase.Controllers
             ViewBag.ClubId = new SelectList(db.Clubs, "Id", "Name", competitor.ClubId);
             return View(competitor);
         }
-
+        [RequireHttps]
+        [Authorize]
         // GET: Competitors/Edit/5
         public ActionResult Edit(Guid? id)
         {
@@ -75,7 +83,10 @@ namespace JudoTournamentBase.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(db.Categories.OrderBy(c => c.Gender).ThenBy(c => c.Age).ThenBy(c => c.Weight), "Id", "Name", competitor.CategoryId);
+            Session["Gender"] = (int)competitor.Gender;
+            Session["Age"] = competitor.Category.Age;
+
+            ViewBag.CategoryId = new SelectList(db.Categories.Where(c=> c.Gender == competitor.Gender && c.Age == competitor.Category.Age).OrderBy(c => c.Gender).ThenBy(c => c.Age).ThenBy(c => c.Weight), "Id", "Name", competitor.CategoryId);
             ViewBag.ClubId = new SelectList(db.Clubs, "Id", "Name", competitor.ClubId);
             return View(competitor);
         }
@@ -93,11 +104,12 @@ namespace JudoTournamentBase.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Categories.OrderBy(c => c.Gender).ThenBy(c => c.Age).ThenBy(c => c.Weight), "Id", "Name", competitor.CategoryId);
+            ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.Gender == competitor.Gender && c.Age == competitor.Category.Age).OrderBy(c => c.Gender).ThenBy(c => c.Age).ThenBy(c => c.Weight), "Id", "Name", competitor.CategoryId);
             ViewBag.ClubId = new SelectList(db.Clubs, "Id", "Name", competitor.ClubId);
             return View(competitor);
         }
-
+        [RequireHttps]
+        [Authorize]
         // GET: Competitors/Delete/5
         public ActionResult Delete(Guid? id)
         {
@@ -123,7 +135,58 @@ namespace JudoTournamentBase.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public ActionResult GetCategoriesByGender(int gender)
+        {
+            Session["Gender"] = gender;
+            var categoryAge = Convert.ToInt32(Session["Age"]);
+            var categories = db.Categories.Where(c => (int)c.Gender == gender && (int)c.Age == categoryAge).OrderBy(c => c.Gender).ThenBy(c => c.Age).ThenBy(c => c.Weight).ToList();
 
+            if (categoryAge == 999)
+            {
+                categories = db.Categories.Where(c => (int)c.Gender == gender).OrderBy(c => c.Gender).ThenBy(c => c.Age).ThenBy(c => c.Weight).ToList();
+            }
+
+            SelectList categoriesList = new SelectList(categories, "Id", "Name");
+            return Json(categoriesList);
+        }
+        [HttpPost]
+        public ActionResult GetCategoriesByDate(string date)
+        {       
+            var categoryAge = 0;
+            var gender = Convert.ToInt32(Session["Gender"]);
+
+            try
+            {
+
+                var birthDate = DateTime.ParseExact(date, "d.M.yyyy", CultureInfo.InvariantCulture);
+                var years = DateTime.Now.Year - birthDate.Year;
+                
+                if (years < 8)
+                    categoryAge = 8;
+                else if (years < 10)
+                    categoryAge = 10;
+                else if (years < 12)
+                    categoryAge = 12;
+                else if (years < 14)
+                    categoryAge = 14;
+                else if (years < 16)
+                    categoryAge = 16;
+                else if (years < 18)
+                    categoryAge = 18;
+
+                Session["Age"] = categoryAge;
+            }
+            catch (Exception)
+            {
+                return Json(new SelectList(db.Categories.Where(c => (int)c.Gender == 0).OrderBy(c => c.Gender).ThenBy(c => c.Age).ThenBy(c => c.Weight).ToList(), "Id", "Name"));
+            }
+
+            var categories = db.Categories.Where(c => (int)c.Gender == gender && (int)c.Age == categoryAge).OrderBy(c => c.Gender).ThenBy(c => c.Age).ThenBy(c => c.Weight).ToList();
+            SelectList categoriesList = new SelectList(categories, "Id", "Name");
+            return Json(categoriesList);
+        }
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

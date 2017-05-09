@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>@Resources.Localization.Competitors</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(Resources.Localization.Create + " " + Resources.Localization.CompetitorCreate, "Create")
 </p>
 <table class="table">
     <tr>
@@ -47,9 +47,12 @@
                 @Html.DisplayFor(modelItem => item.Club.Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink(Resources.Localization.Edit, "Edit", new { id = item.Id }) |
+                @Html.ActionLink(Resources.Localization.Details, "Details", new { id = item.Id }) 
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink(Resources.Localization.Delete, "Delete", new { id = item.Id })
+                }
             </td>
         </tr>
     }

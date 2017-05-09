@@ -124,6 +124,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to competitor.
+        /// </summary>
+        public static string CompetitorCreate {
+            get {
+                return ResourceManager.GetString("CompetitorCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Competitors.
         /// </summary>
         public static string Competitors {

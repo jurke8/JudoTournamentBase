@@ -5,28 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>@Resources.Localization.Details</h2>
 
 <div>
-    <h4>Competitor</h4>
+    <h4>@Resources.Localization.Competitor</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Club.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Club.Name)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
@@ -58,7 +42,28 @@
         <dd>
             @Html.DisplayFor(model => model.DateOfBirth)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClubId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Club.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.DateCreated)
         </dt>
@@ -70,6 +75,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(Resources.Localization.Edit, "Edit", new { id = Model.Id }) |
+    @Html.ActionLink(Resources.Localization.BackToList, "Index")
 </p>

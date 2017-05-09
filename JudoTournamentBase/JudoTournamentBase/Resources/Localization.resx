@@ -138,6 +138,9 @@
   <data name="Competitor" xml:space="preserve">
     <value>Competitor</value>
   </data>
+  <data name="CompetitorCreate" xml:space="preserve">
+    <value>competitor</value>
+  </data>
   <data name="Competitors" xml:space="preserve">
     <value>Competitors</value>
   </data>
