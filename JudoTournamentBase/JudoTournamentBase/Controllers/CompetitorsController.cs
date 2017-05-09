@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using JudoTournamentBase.Models;
 using System.Globalization;
 using JudoTournamentBase.Enums;
+using JudoTournamentBase.Utils;
 
 namespace JudoTournamentBase.Controllers
 {
@@ -18,9 +19,47 @@ namespace JudoTournamentBase.Controllers
         [RequireHttps]
         [Authorize]
         // GET: Competitors
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string categoryId, string clubId)
         {
             var competitors = db.Competitors.Include(c => c.Category).Include(c => c.Club);
+            ViewBag.CategoryId = new SelectList(db.Categories.OrderBy(c => c.Gender).ThenBy(c => c.Age).ThenBy(c => c.Weight), "Id", "Name");
+            ViewBag.ClubId = new SelectList(db.Clubs, "Id", "Name");
+
+            // Filtering
+            if (!String.IsNullOrEmpty(categoryId))
+            {
+                ViewBag.Category = categoryId;
+                competitors = competitors.Where(c => categoryId.Equals(c.CategoryId.ToString()));
+            }
+            if (!String.IsNullOrEmpty(clubId))
+            {
+                ViewBag.Club = clubId;
+                competitors = competitors.Where(c => clubId.Equals(c.ClubId.ToString()));
+            }
+
+            //Sorting
+            ViewBag.CategorySort = sortOrder == "category" ? "category_desc" : "category";
+            ViewBag.ClubSort = sortOrder == "club" ? "club_desc" : "club";
+
+            switch (sortOrder)
+            {
+                case "category":
+                    competitors = competitors.OrderBy(c => c.Category.Gender).ThenBy(c => c.Category.Age).ThenBy(c => c.Category.Weight);
+                    break;
+                case "category_desc":
+                    competitors = competitors.OrderByDescending(c => c.Category.Gender).ThenBy(c => c.Category.Age).ThenBy(c => c.Category.Weight);
+                    break;
+                case "club":
+                    competitors = competitors.OrderBy(c => c.Club.Name);
+                    break;
+                case "club_desc":
+                    competitors = competitors.OrderByDescending(c => c.Club.Name);
+                    break;              
+                default:
+                    competitors = competitors.OrderBy(c => c.DateCreated);
+                    break;
+            }
+
             return View(competitors.ToList());
         }
         [RequireHttps]
@@ -186,7 +225,24 @@ namespace JudoTournamentBase.Controllers
             SelectList categoriesList = new SelectList(categories, "Id", "Name");
             return Json(categoriesList);
         }
-        
+        public ActionResult Export(string categoryId, string clubId)
+        {
+            var fileDownloadName = Resources.Localization.Competitors + "-" + DateTime.Now.ToShortDateString() + ".xlsx";
+            const string contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
+            var reportUtils = new ReportUtils();
+
+            var fileStream = reportUtils.GenerateReport(categoryId, clubId);
+            if (fileStream != null)
+            {
+                var fsr = new FileStreamResult(fileStream, contentType) { FileDownloadName = fileDownloadName };
+                return fsr;
+            }
+            else
+            {
+                return RedirectToAction("Index", "Competitors", new { errors = true });
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

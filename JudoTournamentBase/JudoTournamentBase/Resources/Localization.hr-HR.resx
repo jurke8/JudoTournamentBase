@@ -171,6 +171,9 @@
   <data name="Edit" xml:space="preserve">
     <value>Uredi</value>
   </data>
+  <data name="ExportToExcel" xml:space="preserve">
+    <value>Izvoz u Excel</value>
+  </data>
   <data name="ExternalLoginDesc" xml:space="preserve">
     <value>Prijavi se s drugim servisom</value>
   </data>
@@ -249,6 +252,9 @@
   <data name="Save" xml:space="preserve">
     <value>Snimi</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Traži</value>
+  </data>
   <data name="ServiceLoginAssociation" xml:space="preserve">
     <value>Povežite svoj Facebook račun</value>
   </data>
@@ -258,6 +264,9 @@
   <data name="ServiceLoginSuccess" xml:space="preserve">
     <value>Uspješno ste ovjereni putem Facebooka.
 U nastavku unesite korisničko ime za ovu web stranicu i kliknite gumb Registriraj da biste dovršili prijavu.</value>
+  </data>
+  <data name="ShowAll" xml:space="preserve">
+    <value>Prikaži sve</value>
   </data>
   <data name="StringLength" xml:space="preserve">
     <value>{0} mora biti najmanje dugačka {2} znakova</value>

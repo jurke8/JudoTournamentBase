@@ -10,6 +10,26 @@
 <p>
     @Html.ActionLink(Resources.Localization.Create + " " + Resources.Localization.CompetitorCreate, "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+        <div style="display:flex">
+            <p style="position:relative;padding-top:7px"> @Resources.Localization.Category:</p>@Html.DropDownList("CategoryId", null, Resources.Localization.ShowAll, htmlAttributes: new { @class = "form-control", @style = "margin-left:10px" })
+        </div>
+        <br />
+        <div style="display:flex">
+            <p style="position:relative;padding-top:7px"> @Resources.Localization.Club:</p>@Html.DropDownList("ClubId", null, Resources.Localization.ShowAll, htmlAttributes: new { @class = "form-control", @style = "margin-left:10px" })
+        </div>
+        <br />
+        <input type="submit" value="@Resources.Localization.Search" />
+}
+<br />
+@using (Html.BeginForm("Export", "Competitors", new { TypeFilter = ViewBag.TypeFilter, CowId = ViewBag.CowFilter }))
+{
+    <input type="submit" value="@Resources.Localization.ExportToExcel" />
+}
+<br />
+
 <table class="table">
     <tr>
 
@@ -21,10 +41,10 @@
             @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
+            @Html.ActionLink(Resources.Localization.Category, "Index", new { sortOrder = ViewBag.CategorySort, categoryId = ViewBag.Category, clubId = ViewBag.Club })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClubId)
+            @Html.ActionLink(Resources.Localization.Club, "Index", new { sortOrder = ViewBag.ClubSort, categoryId = ViewBag.Category, clubId = ViewBag.Club })
         </th>
         <th></th>
     </tr>
@@ -48,7 +68,7 @@
             </td>
             <td>
                 @Html.ActionLink(Resources.Localization.Edit, "Edit", new { id = item.Id }) |
-                @Html.ActionLink(Resources.Localization.Details, "Details", new { id = item.Id }) 
+                @Html.ActionLink(Resources.Localization.Details, "Details", new { id = item.Id }) |
                 @if (User.IsInRole("Admin"))
                 {
                     @Html.ActionLink(Resources.Localization.Delete, "Delete", new { id = item.Id })

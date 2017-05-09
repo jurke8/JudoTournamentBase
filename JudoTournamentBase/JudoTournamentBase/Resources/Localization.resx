@@ -171,6 +171,9 @@
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="ExportToExcel" xml:space="preserve">
+    <value>Export to Excel</value>
+  </data>
   <data name="ExternalLoginDesc" xml:space="preserve">
     <value>Use another service to log in</value>
   </data>
@@ -249,6 +252,9 @@
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
   <data name="ServiceLoginAssociation" xml:space="preserve">
     <value>Associate your Facebook account</value>
   </data>
@@ -258,6 +264,9 @@
   <data name="ServiceLoginSuccess" xml:space="preserve">
     <value>You've successfully authenticated with Facebook.
 Please enter a user name for this site below and click the Register button to finish logging in.</value>
+  </data>
+  <data name="ShowAll" xml:space="preserve">
+    <value>Show all</value>
   </data>
   <data name="StringLength" xml:space="preserve">
     <value>The {0} must be at least {2} characters long</value>
