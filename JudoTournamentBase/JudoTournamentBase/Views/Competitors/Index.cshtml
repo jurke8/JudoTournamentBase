@@ -24,7 +24,7 @@
         <input type="submit" value="@Resources.Localization.Search" />
 }
 <br />
-@using (Html.BeginForm("Export", "Competitors", new { TypeFilter = ViewBag.TypeFilter, CowId = ViewBag.CowFilter }))
+@using (Html.BeginForm("Export", "Competitors", new { TypeFilter = ViewBag.Category, CowId = ViewBag.Club }))
 {
     <input type="submit" value="@Resources.Localization.ExportToExcel" />
 }
