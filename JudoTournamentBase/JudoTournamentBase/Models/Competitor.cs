@@ -43,6 +43,9 @@ namespace JudoTournamentBase.Models
         public Guid CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
+        [Display(Name = "DoubleStart", ResourceType = typeof(Localization))]
+        public bool DoubleStart { get; set; }
+
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Localization))]
         [Display(Name = "Club", ResourceType = typeof(Localization))]
         public Guid ClubId { get; set; }

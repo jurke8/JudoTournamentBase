@@ -95,7 +95,7 @@ namespace JudoTournamentBase.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Gender,DateOfBirth,CategoryId,ClubId,DateCreated")] Competitor competitor)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Gender,DateOfBirth,CategoryId,ClubId,DoubleStart,DateCreated")] Competitor competitor)
         {
             if (ModelState.IsValid)
             {
@@ -135,7 +135,7 @@ namespace JudoTournamentBase.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Gender,DateOfBirth,CategoryId,ClubId,DateCreated")] Competitor competitor)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Gender,DateOfBirth,CategoryId,DoubleStart,ClubId,DateCreated")] Competitor competitor)
         {
             if (ModelState.IsValid)
             {

@@ -35,5 +35,6 @@ namespace JudoTournamentBase.Models
         public System.Data.Entity.DbSet<JudoTournamentBase.Models.Category> Categories { get; set; }
 
         public System.Data.Entity.DbSet<JudoTournamentBase.Models.Club> Clubs { get; set; }
+
     }
 }

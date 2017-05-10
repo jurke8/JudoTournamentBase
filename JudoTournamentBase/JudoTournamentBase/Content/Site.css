@@ -33,3 +33,9 @@ a.classname {
     a.classname.logo {
         background: url(../img/rsz_mladostosijek_logo.png) no-repeat center;
     }
+
+.checkbox_form {
+    width: 12px !important;
+    height: 13px !important;
+    margin-left : 0px !important;
+}
