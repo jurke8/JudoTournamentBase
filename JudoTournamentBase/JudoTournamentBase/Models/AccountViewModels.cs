@@ -13,7 +13,7 @@ namespace JudoTournamentBase.Models
 
         [Required(ErrorMessageResourceName = "RequiredField", ErrorMessageResourceType = typeof(Localization))]
         [StringLength(100, ErrorMessageResourceName = "StringLength", ErrorMessageResourceType = typeof(Localization), MinimumLength = 5)]
-        [Display(Name = "UserName")]
+        [Display(Name = "UserName", ResourceType = typeof(Localization))]
         public string UserName { get; set; }
 
     }

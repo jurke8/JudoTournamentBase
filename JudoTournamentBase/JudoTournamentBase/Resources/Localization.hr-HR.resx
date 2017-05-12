@@ -281,7 +281,7 @@ U nastavku unesite korisničko ime za ovu web stranicu i kliknite gumb Registrir
     <value>Prikaži sve</value>
   </data>
   <data name="StringLength" xml:space="preserve">
-    <value>{0} mora biti najmanje dugačka {2} znakova</value>
+    <value>Minimalna duljina {0} je  {2} znakova</value>
   </data>
   <data name="UserName" xml:space="preserve">
     <value>Korisničko ime</value>
