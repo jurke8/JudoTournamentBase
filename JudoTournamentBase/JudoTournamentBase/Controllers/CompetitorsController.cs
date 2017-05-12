@@ -10,6 +10,8 @@ using JudoTournamentBase.Models;
 using System.Globalization;
 using JudoTournamentBase.Enums;
 using JudoTournamentBase.Utils;
+using PagedList;
+using System.Configuration;
 
 namespace JudoTournamentBase.Controllers
 {
@@ -19,11 +21,43 @@ namespace JudoTournamentBase.Controllers
         [RequireHttps]
         [Authorize]
         // GET: Competitors
-        public ActionResult Index(string sortOrder, string categoryId, string clubId)
+        public ViewResult Index(string sortOrder, string currentCategory, string currentClub, string categoryId, string clubId, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
             var competitors = db.Competitors.Include(c => c.Category).Include(c => c.Club);
             ViewBag.CategoryId = new SelectList(db.Categories.OrderBy(c => c.Gender).ThenBy(c => c.Age).ThenBy(c => c.Weight), "Id", "Name");
             ViewBag.ClubId = new SelectList(db.Clubs, "Id", "Name");
+
+            if (categoryId != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                categoryId = currentCategory;
+                if (categoryId!=null)
+                {
+                    ViewBag.CategoryId = new SelectList(db.Categories.OrderBy(c => c.Gender).ThenBy(c => c.Age).ThenBy(c => c.Weight), "Id", "Name", categoryId);
+                }
+            }
+
+            ViewBag.CurrentCategory = categoryId;
+
+            if (clubId != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                clubId = currentClub;
+                if (clubId != null)
+                {
+                    ViewBag.ClubId = new SelectList(db.Clubs, "Id", "Name",clubId);
+                }
+            }
+
+            ViewBag.CurrentCLub = clubId;
+
 
             // Filtering
             if (!String.IsNullOrEmpty(categoryId))
@@ -59,8 +93,9 @@ namespace JudoTournamentBase.Controllers
                     competitors = competitors.OrderBy(c => c.DateCreated);
                     break;
             }
-
-            return View(competitors.ToList());
+            int pageSize = Convert.ToInt32(ConfigurationManager.AppSettings["PageSize"]);
+            int pageNumber = (page ?? 1);
+            return View(competitors.ToPagedList(pageNumber, pageSize));
         }
         [RequireHttps]
         [Authorize]

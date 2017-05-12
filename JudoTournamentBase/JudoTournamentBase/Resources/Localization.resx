@@ -231,6 +231,12 @@
   <data name="No" xml:space="preserve">
     <value>No</value>
   </data>
+  <data name="Of" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Page</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>

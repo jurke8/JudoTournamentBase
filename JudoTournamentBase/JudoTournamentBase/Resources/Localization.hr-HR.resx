@@ -231,6 +231,12 @@
   <data name="No" xml:space="preserve">
     <value>Ne</value>
   </data>
+  <data name="Of" xml:space="preserve">
+    <value>od</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Stranica</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Lozinka</value>
   </data>
