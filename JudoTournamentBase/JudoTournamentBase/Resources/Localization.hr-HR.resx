@@ -193,7 +193,7 @@
     <value>Spol</value>
   </data>
   <data name="HomePageDescription" xml:space="preserve">
-    <value>Opis</value>
+    <value>Pruža vam listu natjecatelja i klubova za vaš turnir</value>
   </data>
   <data name="InvalidEmail" xml:space="preserve">
     <value>Email polje nije ispravna email adresa</value>

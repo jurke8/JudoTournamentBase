@@ -286,7 +286,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Description.
+        ///   Looks up a localized string similar to Provides you a list of competitors and clubs for your tournament.
         /// </summary>
         public static string HomePageDescription {
             get {

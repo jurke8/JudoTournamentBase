@@ -3,18 +3,17 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink(Resources.Localization.Language_label, "ChangeLanguage", "Home", new { language = Resources.Localization.Language_short, returnUrl = this.Request.RawUrl }, null)</li>
-        @if (User.IsInRole("Admin"))
-        {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink(Resources.Localization.Language_label, "ChangeLanguage", "Home", new { language = Resources.Localization.Language_short, returnUrl = this.Request.RawUrl }, null)</li>
+
             <li>
                 @Html.ActionLink(User.Identity.GetUserName(), "Index", "Home", routeValues: null, htmlAttributes: new { title = "Profile" })
             </li>
-        }
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">@Resources.Localization.Logoff</a></li>
-    </ul>
+
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">@Resources.Localization.Logoff</a></li>
+        </ul>
     }
 }
 else

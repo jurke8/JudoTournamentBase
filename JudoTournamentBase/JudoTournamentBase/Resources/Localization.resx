@@ -193,7 +193,7 @@
     <value>Gender</value>
   </data>
   <data name="HomePageDescription" xml:space="preserve">
-    <value>Description</value>
+    <value>Provides you a list of competitors and clubs for your tournament</value>
   </data>
   <data name="InvalidEmail" xml:space="preserve">
     <value>The Email field is not a valid e-mail address</value>
